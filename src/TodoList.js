@@ -1,10 +1,21 @@
-import Todo from "./Todo.js";
-
+import React from "react";
+import { List } from "semantic-ui-react";
+import "semantic-ui-css/semantic.min.css";
 // 목록을 보여주는 컴포넌트
 const TodoList = ({ todos, onClickDelete }) => {
   const list = todos.map((todo) => (
-    <Todo key={todo.id} value={todo.body}></Todo>
+    <List.Item onClick={onClickDelete} key={todo.id}>
+      <List.Icon name="github" size="large" verticalAlign="middle" />
+      <List.Content>
+        <List.Header as="a">{todo.body}</List.Header>
+        <List.Description as="a">{todo.createdAt}</List.Description>
+      </List.Content>
+    </List.Item>
   ));
-  return <ul onClick={onClickDelete}>{list}</ul>;
+  return (
+    <List divided relaxed>
+      {list}
+    </List>
+  );
 };
 export default TodoList;
