@@ -1,15 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import TodoList from "./TodoList";
+
+// style
+import { Input, Button } from "semantic-ui-react";
 
 // todo의 목록
 const initTodos = [];
-
 const TodoWorker = () => {
   const [todos, setTodo] = useState(initTodos);
   const [input, setInput] = useState("");
   const onClickAdding = () => {
     if (input === "") return;
-    setTodo([...todos, { id: input + todos.length, body: input }]);
+    const createdAt = Date.now();
+    setTodo([...todos, { id: input + todos.length, body: input, createdAt }]);
     setInput("");
   };
   const onChangeInput = (e) => {
@@ -23,8 +26,13 @@ const TodoWorker = () => {
   return (
     <>
       <TodoList todos={todos} onClickDelete={onClickDelete} />
-      <input onChange={onChangeInput} value={input} />
-      <button onClick={onClickAdding}>추가</button>
+      <Input
+        focus
+        onChange={onChangeInput}
+        value={input}
+        placeholder="input..."
+      />
+      <Button onClick={onClickAdding}>추가</Button>
     </>
   );
 };
