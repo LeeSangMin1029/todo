@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
+import { EventProvider } from "./hook/useEventContext.js";
 // style
-import { Input, Button } from "semantic-ui-react";
+import IconButton from "./style/IconButton.js";
 
 // todo의 목록
 const initTodos = [];
@@ -24,21 +25,27 @@ const TodoWorker = () => {
     setInput(inputString);
   };
   const onClickDelete = (e) => {
-    const { innerHTML: string } = e.target;
+    const { parentNode } = e.target;
+    const string = parentNode.querySelector(".header").innerHTML;
     setTodo(todos.filter((todo) => todo.body !== string));
   };
   return (
-    <>
-      <TodoList todos={todos} onClickDelete={onClickDelete} />
-      <Input
-        focus
-        onChange={onChangeInput}
-        onKeyPress={onKeyEnter}
-        value={input}
-        placeholder="input..."
-      />
-      <Button onClick={onClickAdding}>추가</Button>
-    </>
+    <EventProvider value={onClickDelete}>
+      <TodoList todos={todos} />
+      <div className="ui input">
+        <input
+          focus="true"
+          onChange={onChangeInput}
+          onKeyPress={onKeyEnter}
+          value={input}
+          placeholder="input..."
+        />
+        <IconButton onClick={onClickAdding}>
+          Add
+          <i className="plus icon"></i>
+        </IconButton>
+      </div>
+    </EventProvider>
   );
 };
 export default TodoWorker;
