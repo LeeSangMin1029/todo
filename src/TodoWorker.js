@@ -14,6 +14,11 @@ const TodoWorker = () => {
     setTodo([...todos, { id: input + todos.length, body: input, createdAt }]);
     setInput("");
   };
+  const onKeyEnter = (e) => {
+    if (e.key === "Enter") {
+      onClickAdding();
+    }
+  };
   const onChangeInput = (e) => {
     const { value: inputString } = e.target;
     setInput(inputString);
@@ -28,6 +33,7 @@ const TodoWorker = () => {
       <Input
         focus
         onChange={onChangeInput}
+        onKeyPress={onKeyEnter}
         value={input}
         placeholder="input..."
       />
