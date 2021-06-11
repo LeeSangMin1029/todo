@@ -20,7 +20,7 @@ const Todo = ({ todo }) => {
         <Header>{todo.body}</Header>
         <div className="description">{getNowDate(todo.createdAt)}</div>
       </div>
-      <IconButton onClick={deleteEvent}>
+      <IconButton onClick={() => deleteEvent(todo.id)}>
         Delete
         <i className="close icon"></i>
       </IconButton>

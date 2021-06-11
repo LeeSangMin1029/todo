@@ -24,10 +24,8 @@ const TodoWorker = () => {
     const { value: inputString } = e.target;
     setInput(inputString);
   };
-  const onClickDelete = (e) => {
-    const { parentNode } = e.target;
-    const string = parentNode.querySelector(".header").innerHTML;
-    setTodo(todos.filter((todo) => todo.body !== string));
+  const onClickDelete = (id) => {
+    setTodo(todos.filter((todo) => todo.id !== id));
   };
   return (
     <EventProvider value={onClickDelete}>

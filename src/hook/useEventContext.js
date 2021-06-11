@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 const EventContext = createContext({
-  onClickDelete: (e) => {},
+  onClickDelete: (id) => {},
 });
 
 export const EventProvider = EventContext.Provider;
