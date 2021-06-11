@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import { getNowDate } from "./util/date.js";
 // style
 import { Input, Button } from "semantic-ui-react";
 
@@ -11,7 +10,7 @@ const TodoWorker = () => {
   const [input, setInput] = useState("");
   const onClickAdding = () => {
     if (input === "") return;
-    const createdAt = getNowDate();
+    const createdAt = new Date();
     setTodo([...todos, { id: input + todos.length, body: input, createdAt }]);
     setInput("");
   };

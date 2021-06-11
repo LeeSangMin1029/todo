@@ -1,4 +1,5 @@
 import React from "react";
+import { getNowDate } from "./util/date.js";
 
 // style
 import { List } from "semantic-ui-react";
@@ -10,7 +11,7 @@ const TodoList = ({ todos, onClickDelete }) => {
       <List.Icon name="github" size="large" verticalAlign="middle" />
       <List.Content>
         <List.Header as="a">{todo.body}</List.Header>
-        <List.Description as="a">{todo.createdAt}</List.Description>
+        <List.Description as="a">{getNowDate(todo.createdAt)}</List.Description>
       </List.Content>
     </List.Item>
   ));
