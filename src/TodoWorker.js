@@ -31,19 +31,21 @@ const TodoWorker = () => {
   };
   return (
     <EventProvider value={onClickDelete}>
-      <TodoList todos={todos} />
-      <div className="ui input">
-        <input
-          focus="true"
-          onChange={onChangeInput}
-          onKeyPress={onKeyEnter}
-          value={input}
-          placeholder="input..."
-        />
-        <IconButton onClick={onClickAdding}>
-          Add
-          <i className="plus icon"></i>
-        </IconButton>
+      <div className="ui container">
+        <TodoList todos={todos} />
+        <div className="ui input">
+          <input
+            focus="true"
+            onChange={onChangeInput}
+            onKeyPress={onKeyEnter}
+            value={input}
+            placeholder="input..."
+          />
+          <IconButton onClick={onClickAdding}>
+            Add
+            <i className="plus icon"></i>
+          </IconButton>
+        </div>
       </div>
     </EventProvider>
   );
