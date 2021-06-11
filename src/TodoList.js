@@ -1,4 +1,6 @@
 import React from "react";
+
+// style
 import { List } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 // 목록을 보여주는 컴포넌트
