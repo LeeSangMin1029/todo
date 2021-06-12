@@ -1,8 +1,8 @@
-import TodoWorker from "./TodoWorker";
+import TodoWorker from './TodoWorker';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <TodoWorker />
     </div>
   );
