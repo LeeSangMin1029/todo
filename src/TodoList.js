@@ -1,9 +1,9 @@
-import React from "react";
-import Todo from "./Todo.js";
+import React, { memo } from 'react';
+import Todo from './Todo.js';
 
 // style
-import { List } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
+import { List } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 // 목록을 보여주는 컴포넌트
 const TodoList = ({ todos }) => {
   return (
@@ -14,4 +14,4 @@ const TodoList = ({ todos }) => {
     </List>
   );
 };
-export default TodoList;
+export default memo(TodoList);

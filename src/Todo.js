@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { getNowDate } from "./util/date.js";
-import EventContext from "./hook/useEventContext.js";
+import React, { useContext, memo } from 'react';
+import { getNowDate } from './util/date.js';
+import EventContext from './hook/useEventContext.js';
 
 // style
-import IconButton from "./style/IconButton.js";
-import styled from "styled-components";
+import IconButton from './style/IconButton.js';
+import styled from 'styled-components';
 
 const Header = styled.div`
   font-size: 1.5em;
@@ -15,17 +15,17 @@ const Header = styled.div`
 const Todo = ({ todo }) => {
   const deleteEvent = useContext(EventContext);
   return (
-    <div className="item">
-      <div className="content">
+    <div className='item'>
+      <div className='content'>
         <Header>{todo.body}</Header>
-        <div className="description">{getNowDate(todo.createdAt)}</div>
+        <div className='description'>{getNowDate(todo.createdAt)}</div>
       </div>
       <IconButton onClick={() => deleteEvent(todo.id)}>
         Delete
-        <i className="close icon"></i>
+        <i className='close icon'></i>
       </IconButton>
     </div>
   );
 };
 
-export default Todo;
+export default memo(Todo);
